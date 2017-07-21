@@ -1,4 +1,6 @@
-FROM resin/rpi-raspbian:jessie-20170621
+FROM resin/armv7hf-debian-qemu
+
+RUN [ "cross-build-start" ]
 
 ENV SHELL /bin/bash
 
@@ -73,3 +75,5 @@ RUN apt-get update && apt-get install -yq wget unzip build-essential python pyth
 	apt-get --purge autoremove python &&\
 	apt-get --purge autoremove python2.7-dev &&\
 	rm -rf /var/lib/apt/lists/*
+
+RUN [ "cross-build-end" ]
